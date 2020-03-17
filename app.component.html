@@ -1,0 +1,55 @@
+<br/><br/>
+<html>
+  <style>
+    table, th , td  {
+      border: 1px solid grey;
+      border-collapse: collapse;
+      padding: 5px;
+      
+    }
+    </style>
+    
+
+<table  *ngIf="data && data.length">
+  
+  <th *ngFor="let header of headers">
+    {{ header }}
+  </th>
+  <tr> <td *ngFor="let filter of filters;let i=index">
+      <input type='text' [(ngModel)]='(filters[i]).filter' />
+  </td>
+  </tr>
+  <tr *ngFor="let rows of data | pipeFilter:filters">
+    <td *ngFor ="let header of headers">
+        {{rows.get(header)}}
+    </td>
+  </tr>
+  </table> 
+
+</html>
+
+  <!-- <table *ngIf="data && data.length" align=center  width=50% border=1>
+    <tr>
+      <th>Book ID</th>
+      <th>Book Title</th>
+      <th>Book Author</th>
+      <th>Book Year of Publish</th>
+    </tr> -->
+     <!--<ul>
+    <li *ngFor="let u of users">
+      {{u.id}}
+      {{u.title}}
+      {{u.author}}
+      {{u.year}}
+    </li>
+    </ul> -->
+   <!-- <tr  *ngFor="let filter of filters;let i=index">
+    <input type='text' [(ngModel)]='(filters[i]).filter' />
+  
+  </tr>
+  <tr *ngFor="let rows of data | pipeFilter:filters">
+    <td *ngFor ="let header of headers">
+        {{rows.get(header)}}
+    </td>
+  </tr>
+  </table> -->
